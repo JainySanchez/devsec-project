@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'; // Importa Route y Routes de react-router-dom
 import Login from './Login';
 import Welcome from './Welcome';
 import Register from './Register';
@@ -30,17 +30,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route exact path="/">
-            {isLoggedIn ? <Welcome onLogout={handleLogout} /> : <Login onLogin={handleLogin} />}
-          </Route>
-          <Route exact path="/register">
-            <Register onRegister={handleRegister} />
-          </Route>
-          <Route exact path="/change-password"> 
-            <ChangePassword onChangePassword={handleChangePassword} />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={isLoggedIn ? <Welcome onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
+          <Route exact path="/register" element={<Register onRegister={handleRegister} />} />
+          <Route exact path="/change-password" element={<ChangePassword onChangePassword={handleChangePassword} />} />
+        </Routes>
       </Router>
     </div>
   );
