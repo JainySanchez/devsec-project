@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './Login';
+import Welcome from './Welcome';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="App">
-      <header className="App-header">
-        {isLoggedIn ? (
-          <div>
-            <h2>Bienvenido Usuario</h2>
-            <button onClick={() => setIsLoggedIn(false)}>Cerrar Sesión</button>
-          </div>
-        ) : (
-          <Login onLogin={() => setIsLoggedIn(true)} /> 
-        )}
-      </header>
+      <Router>
+        <Route exact path="/">
+          {isLoggedIn ? <Welcome setIsLoggedIn={setIsLoggedIn} /> : <Login onLogin={() => setIsLoggedIn(true)} />}
+        </Route>
+      </Router>
     </div>
   );
 }
