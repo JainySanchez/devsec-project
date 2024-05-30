@@ -18,12 +18,10 @@ function App() {
   };
 
   const handleRegister = (email, password) => {
-    // Aquí puedes añadir la lógica para registrar al usuario
     console.log('Registrando usuario con email:', email, 'y password:', password);
   };
 
   const handlePasswordRecovery = (email) => {
-    // Aquí puedes añadir la lógica para enviar el correo de recuperación de contraseña
     console.log('Solicitando recuperación de contraseña para el email:', email);
   };
 
@@ -37,8 +35,8 @@ function App() {
           <Route exact path="/register">
             <Register onRegister={handleRegister} />
           </Route>
-          <Route exact path="/password-recovery"> {/* Nueva ruta para la página de recuperación de contraseña */}
-            <PasswordRecovery onPasswordRecovery={handlePasswordRecovery} /> {/* Pasa la función handlePasswordRecovery */}
+          <Route exact path="/password-recovery"> 
+            <PasswordRecovery onPasswordRecovery={handlePasswordRecovery} /> 
           </Route>
         </Switch>
       </Router>
