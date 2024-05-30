@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './Login';
 import Welcome from './Welcome';
 import Register from './Register';
-import PasswordRecovery from './PasswordRecovery'; // Importa el componente de recuperación de contraseña
+import ChangePassword from './ChangePassword'; 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,8 +21,8 @@ function App() {
     console.log('Registrando usuario con email:', email, 'y password:', password);
   };
 
-  const handlePasswordRecovery = (email) => {
-    console.log('Solicitando recuperación de contraseña para el email:', email);
+  const handleChangePassword = (oldPassword, newPassword) => {
+    console.log('Cambiando contraseña desde', oldPassword, 'a', newPassword);
   };
 
   return (
@@ -35,8 +35,8 @@ function App() {
           <Route exact path="/register">
             <Register onRegister={handleRegister} />
           </Route>
-          <Route exact path="/password-recovery"> 
-            <PasswordRecovery onPasswordRecovery={handlePasswordRecovery} /> 
+          <Route exact path="/change-password"> 
+            <ChangePassword onChangePassword={handleChangePassword} /> 
           </Route>
         </Switch>
       </Router>
