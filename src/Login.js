@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes añadir la lógica para manejar el login
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // Simulación de autenticación básica
+    if (email === 'user@example.com' && password === 'password') {
+      // Llamar a la función onLogin si el inicio de sesión es exitoso
+      onLogin();
+    } else {
+      // Aquí puedes mostrar un mensaje de error
+      alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
+    }
   };
 
   return (
